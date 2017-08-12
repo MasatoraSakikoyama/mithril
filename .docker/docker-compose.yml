@@ -1,10 +1,10 @@
 version: '2'
 services:
     web:
-        image: js
+        image: mithril
         ports:
             - "80:8080"
         volumes_from:
-            - container:js_data
+            - container:mithril_data
             - container:dotfiles
         command: bash -c "npm run serve"

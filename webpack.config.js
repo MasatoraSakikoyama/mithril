@@ -10,7 +10,7 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   watchOptions: {
-//    poll: true, // これがあるとcpu使用率が跳ね上がるがないと変更が反映されない
+    poll: true,
     ignore: /node_modules/,
   },
   devServer: {

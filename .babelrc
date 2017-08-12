@@ -1,6 +1,11 @@
 {
-    "preets": [
+    "presets": [
         ["es2015", { "modules": false }],
         "stage-2"
+    ],
+    "plugins": [
+        ["transform-react-jsx", {
+            "pragma": "m"
+        }]
     ]
 }

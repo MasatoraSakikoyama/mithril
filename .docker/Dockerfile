@@ -6,5 +6,7 @@ RUN apt-get update -y \
     && apt-get upgrade -y \
     && apt-get install -y vim vim-gnome wget
 
-RUN mkdir -p /var/www/js
-WORKDIR /var/www/js
+RUN npm install -g yarn
+
+RUN mkdir -p /var/www/mithril
+WORKDIR /var/www/mithril
