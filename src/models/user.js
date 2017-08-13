@@ -10,6 +10,9 @@ const User = {
       User.list = success.data;
     });
   },
+  reverse: () => {
+    User.list = User.list.reverse();
+  },
   current: {},
   load: (id) => {
     return m.request({
@@ -29,6 +32,26 @@ const User = {
       data: User.current,
       withCredentials: true,
     });
+  },
+  replace: (from, to) =>  {
+    let f;
+    let t;
+    User.list.forEach((v, i) => {
+      if (v.id === from) {
+         f = {
+          index: i,
+          value: v,
+        };
+      }
+      if (v.id === to) {
+        t = {
+          index: i,
+          value: v,
+        };
+      }
+    });
+    User.list.splice(f.index, 1, t.value);
+    User.list.splice(t.index, 1, f.value);
   },
 }
 
