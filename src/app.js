@@ -1,34 +1,25 @@
+import Hello from './components/hello';
+import UserList from './components/user.list';
+import UserForm from './components/user.form';
+import Layout from './components/layout';
+
 const root = document.body;
 
-let count = 0;
-function increment() {
-  m.request({
-    method: 'PUT',
-    url: '//rem-rest-api.herokuapp.com/api/tutorial/1',
-    data: {count: count+1},
-    withCredentials: true,
-  })
-  .then((success) => {
-    count = parseInt(success.count);
-  });
-};
-
-const Hello = {
-  view: () => {
-    return <main>
-      <h1 class="title">Hello World!</h1>
-      <button onclick={increment}>{count}ボタン!</button>
-    </main>
-  }
-};
-
-const Splash = {
-  view: () => {
-    return <a href="#!/hello">Welcome</a>
-  }
-};
-
-m.route(root, "/splash", {
-  "/splash": Splash,
-  "/hello": Hello,
+m.route.prefix('#');
+m.route(root, '/hello', {
+  '/hello': {
+    render: () => {
+      return <Layout><Hello /></Layout>
+    },
+  },
+  '/userlist': {
+    render: () => {
+      return <Layout><UserList /></Layout>
+    },
+  },
+  '/useredit/:id': {
+    render: (vnode) => {
+      return <Layout><UserForm id={vnode.attrs.id} /></Layout>
+    },
+  },
 });
